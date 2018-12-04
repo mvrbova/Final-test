@@ -22,4 +22,5 @@ publish_in_rss_checkbox = "id=addJobVacancy_publishedInFeed"
 save_vacancy_button = "id=btnSave"
 
 #modal
+check_select_row = "id=ohrmList_chkSelectRecord_1"
 confirm_deletion_button = "id=dialogDeleteBtn"

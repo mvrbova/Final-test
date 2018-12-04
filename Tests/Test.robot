@@ -7,26 +7,33 @@ Test Setup    Open Browser    https://opensource-demo.orangehrmlive.com/    chro
 Test Teardown    Close Browser
 
 *** Variables ***
-${prefix}    
+${prefix}     ${EMPTY}   
 ${url}    https://opensource-demo.orangehrmlive.com/
 ${browser}    chrome
 
 *** Test Cases ***
-Login To HR System
-    Click link    ${url}
-    Wait Until Page Contains Element    ${id=txtUsername}    admin
-    Input Password    ${id=txtPassword}    admin123
-    Click Button    ${id=btnLogin}
-    Wait Until Page Contains Element    ${id=menu_recruitment_viewRecruitmentModule}
-    Wait Until Page Contains Element    ${id=menu_recruitment_viewJobVacancy}
-    Click Element    ${name=btnAdd}
-    Select From List By Index    ${id=addJobVacancy_jobTitle}    Account Clerk
-    Input Text    ${id=addJobVacancy_name}    test
-    Input Text    ${id=addJobVacancy_hiringManager}    Linda Anderson
-    Input Text    ${id=addJobVacancy_noOfPositions}    2
-    Input Text    ${id=addJobVacancy_description}    asfsdf
-    Select Checkbox    ${id=addJobVacancy_publishedInFeed}
+Test Get Vacancy Name
+    Input Text    ${username_input}    Admin
+    Input Password    ${password_input}    admin123
+    Click Button    ${login_button}
+    Wait Until Page Contains Element    ${recruitment_tab}
+    Wait Until Page Contains Element    ${vacancies_subtab}
+    Click Element    ${open_vacancy_form}
+    Select From List By Index    ${job_title_select}    Account Clerk
+    Input Text    ${vacancy_name_input}    test
+    Input Text    ${hiring_manager_input}    Linda Anderson
+    Input Text    ${number_of_positions_input}    2
+    Input Text    ${description_textarea}    asfsdf
+    Select Checkbox    ${publish_in_rss_checkbox}
+    Click Button    ${save_vacancy_button}
+
+
+***inactive***    
+Test Delete Vacancy
+    Wait Until Page Contains Element    ${check_select_row}
     
-            
+    
+
+***inactive***            
 Test
     ${vacancy_name}    Get Vacancy Name    ${prefix}
